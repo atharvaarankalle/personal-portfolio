@@ -10,6 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.20",
+    "commitizen": "^4.3.0",
+    "commitizen-emoji": "^1.0.5",
+    "cz-conventional-changelog": "^3.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -24,5 +30,10 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/commitizen-emoji"
+    }
   }
 }
