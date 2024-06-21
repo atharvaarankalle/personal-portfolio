@@ -12,12 +12,18 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.20",
     "@mui/material": "^5.15.20",
+    "@tsparticles/all": "^3.4.0",
+    "@tsparticles/engine": "^3.4.0",
+    "@tsparticles/react": "^3.0.0",
     "commitizen": "^4.3.0",
     "commitizen-emoji": "^1.0.5",
     "cz-conventional-changelog": "^3.3.0",
+    "cz-emoji-conventional": "^1.0.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
@@ -33,7 +39,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/commitizen-emoji"
+      "path": "./node_modules/cz-emoji-conventional"
     }
   }
 }
