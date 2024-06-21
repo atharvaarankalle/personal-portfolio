@@ -7,15 +7,15 @@ const StyledAvatar = styled(Avatar)({
   height: 500,
 });
 
-const ProfileDescriptionBox = styled(Box)(({ theme }) => ({
+const ProfileDescriptionBox = styled(Box)({
     paddingTop: "3rem",
-}));
+});
 
-const HeadingTextTypography = styled(Typography)(({ theme }) => ({
+const HeadingTextTypography = styled(Typography)({
   color: "#FFFFFF",
   fontSize: "4rem",
   fontWeight: "bold",
-}));
+});
 
 const NameTextTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.secondary.main,
@@ -24,11 +24,11 @@ const NameTextTypography = styled(Typography)(({ theme }) => ({
   paddingBottom: "1rem"
 }));
 
-const AboutMeTextTypography = styled(Typography)(({ theme }) => ({
+const AboutMeTextTypography = styled(Typography)({
     maxWidth: "80%",
     textAlign: "justify",
     paddingTop: "0.5rem"
-}));
+});
 
 const ProfileSummary = () => {
   return (

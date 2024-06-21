@@ -28,8 +28,7 @@ const SocialsButtons = () => {
       >
         <StyledIconButton
           aria-label="linkedin"
-          href="https://www.linkedin.com/in/atharva-arankalle/"
-          target="_blank"
+          onClick={() => window.open("https://www.linkedin.com/in/atharva-arankalle/", "_blank")}
         >
           <LinkedInIcon sx={{ color: "#FFFFFF" }} fontSize="large" />
         </StyledIconButton>
@@ -42,8 +41,7 @@ const SocialsButtons = () => {
       >
         <StyledIconButton
           aria-label="github"
-          href="https://github.com/atharvaarankalle"
-          target="_blank"
+          onClick={() => window.open("https://github.com/atharvaarankalle", "_blank")}
         >
           <GitHubIcon sx={{ color: "#FFFFFF" }} fontSize="large" />
         </StyledIconButton>
@@ -64,7 +62,7 @@ const SocialsButtons = () => {
         arrow
         disableInteractive
       >
-        <StyledIconButton aria-label="resume" href={resume} target="_blank">
+        <StyledIconButton aria-label="resume" onClick={() => window.open(resume, "_blank")}>
           <DescriptionIcon sx={{ color: "#FFFFFF" }} fontSize="large" />
         </StyledIconButton>
       </StyledTooltip>
