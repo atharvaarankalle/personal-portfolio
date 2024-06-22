@@ -1,5 +1,6 @@
 import { Box, styled } from "@mui/material";
 import ProfileSummary from "../components/ProfileSummary";
+import Skills from "../components/Skills";
 
 const StyledBox = styled(Box)({
   display: "flex",
@@ -13,6 +14,7 @@ const LandingPage = () => {
   return (
     <StyledBox>
       <ProfileSummary />
+      <Skills />
     </StyledBox>
   );
 };
