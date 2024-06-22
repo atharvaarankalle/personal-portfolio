@@ -3,9 +3,10 @@ import ProfileSummary from "../components/ProfileSummary";
 
 const StyledBox = styled(Box)({
   display: "flex",
+  flexDirection: "column",
   justifyContent: "center",
   height: "100%",
-  alignItems: "center"
+  alignItems: "center",
 });
 
 const LandingPage = () => {
