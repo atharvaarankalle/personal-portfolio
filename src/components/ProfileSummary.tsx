@@ -7,10 +7,6 @@ const StyledAvatar = styled(Avatar)({
   height: 500,
 });
 
-const ProfileDescriptionBox = styled(Box)({
-    paddingTop: "3rem",
-});
-
 const HeadingTextTypography = styled(Typography)({
   color: "#FFFFFF",
   fontSize: "4rem",
@@ -32,9 +28,9 @@ const AboutMeTextTypography = styled(Typography)({
 
 const ProfileSummary = () => {
   return (
-    <Stack direction="row" gap={7} sx={{ maxWidth: "60%" }}>
+    <Stack direction="row" gap={7} sx={{ maxWidth: "65%", alignItems: "center" }}>
       <StyledAvatar src={profilePicture} alt="Atharva Arankalle" />
-      <ProfileDescriptionBox>
+      <Box>
         <Stack direction="row" gap={2}>
           <HeadingTextTypography>Hi, I'm</HeadingTextTypography>
           <NameTextTypography>Atharva</NameTextTypography>
@@ -54,7 +50,7 @@ const ProfileSummary = () => {
             I'm also currently learning both Hindi and Korean on Duolingo, and I've got a streak of over 1 year on the app!
         </AboutMeTextTypography>
         <SocialsButtons />
-      </ProfileDescriptionBox>
+      </Box>
     </Stack>
   );
 };

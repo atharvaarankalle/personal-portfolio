@@ -1,4 +1,14 @@
-import { createTheme } from "@mui/material"
+import { createTheme } from "@mui/material/styles"
+
+declare module "@mui/material/styles" {
+    interface Palette {
+        mutedPurple: Palette["primary"];
+    }
+
+    interface PaletteOptions {
+        mutedPurple?: PaletteOptions["primary"];
+    }
+}
 
 export const colors = {
     darkPurple: '#0a0019',
@@ -17,6 +27,9 @@ export const theme = createTheme({
         },
         background: {
             default: colors.darkPurple
+        },
+        mutedPurple: {
+            main: colors.mutedPurple
         }
     },
     typography: {
