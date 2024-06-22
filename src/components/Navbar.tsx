@@ -17,7 +17,22 @@ const NavLink = styled(Button)(({ theme }) => ({
   textTransform: "none",
   "&:hover": {
     color: theme.palette.mutedPurple.main,
-  }
+  },
+  "&::before": {
+    content: "''",
+    position: "absolute",
+    height: 3,
+    width: 0,
+    bottom: 0,
+    left: 0,
+    visibility: "hidden",
+    backgroundColor: theme.palette.mutedPurple.main,
+    transition: "all 0.3s ease-in-out",
+  },
+  "&:hover::before": {
+    visibility: "visible",
+    width: "100%",
+  },
 }));
 
 const Navbar = () => {
