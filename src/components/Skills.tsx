@@ -22,7 +22,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
 
 const Skills = () => {
     return (
-      <StyledBox>
+      <StyledBox id="skills">
         <StyledCard>
           <CardContent>
             <Typography variant="h3" fontWeight="bold">Skills</Typography>

@@ -39,7 +39,7 @@ const Navbar = () => {
     return (
       <StyledBox>
         <Stack direction="row" gap={3}>
-          <NavLink disableRipple>skills</NavLink>
+          <NavLink disableRipple href="#skills">skills</NavLink>
           <NavLink disableRipple>projects</NavLink>
           <NavLink disableRipple>contact</NavLink>
         </Stack>
