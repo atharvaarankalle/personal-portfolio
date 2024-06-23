@@ -1,15 +1,18 @@
 import {
   AppBar,
+  Avatar,
   Box,
   Button,
   Drawer,
   IconButton,
   Stack,
   Toolbar,
+  Typography,
   styled,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
+import profilePicture from "../assets/profile-picture.jpg";
 
 const NavLink = styled(Button)(({ theme }) => ({
   width: "auto",
@@ -118,8 +121,8 @@ const Navbar = () => {
             display: "flex",
             justifyContent: {
               sm: "flex-start",
-              md: "flex-end",
-              lg: "flex-end",
+              md: "space-between",
+              lg: "space-between",
             },
           }}
         >
@@ -127,10 +130,25 @@ const Navbar = () => {
             aria-label="Open Menu"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ color: "#FFFFFF", display: { md: "none" } }}
+            sx={{ color: "#FFFFFF", display: { md: "none" }, paddingRight: "1rem" }}
           >
             <MenuIcon />
           </IconButton>
+          <Stack
+            direction="row"
+            alignItems="center"
+            sx={{ visibility: isScrolled ? "show" : "hidden" }}
+            gap={2}
+          >
+            <IconButton sx={{ padding: 0 }} href="#" onClick={() => setActiveLink("")}>
+              <Avatar src={profilePicture} />
+            </IconButton>
+            <Typography variant="h5" sx={{ 
+              "@media (max-width: 550px)": {
+                fontSize: "1rem",
+              }
+            }}>Atharva Arankalle</Typography>
+          </Stack>
           <Stack
             direction="row"
             gap={3}
