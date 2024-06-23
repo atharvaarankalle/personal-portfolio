@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import BadgeUrls from "../data/BadgeUrls";
+import BadgeUrls from "../ChipUrls";
 
 interface TechnologyChipProps {
   technologyName: string;

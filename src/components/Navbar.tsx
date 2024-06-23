@@ -1,14 +1,6 @@
-import { Box, Button, Stack, styled } from "@mui/material";
+import { AppBar, Box, Button, Drawer, IconButton, Stack, Toolbar, styled } from "@mui/material";
 import { useState } from "react";
-
-const StyledBox = styled(Box)({
-  position: "fixed",
-  top: 20,
-  right: 20,
-  width: "100%",
-  display: "flex",
-  justifyContent: "end",
-});
+import MenuIcon from "@mui/icons-material/Menu";
 
 const NavLink = styled(Button)(({ theme }) => ({
   width: "auto",
@@ -45,28 +37,83 @@ const NavLink = styled(Button)(({ theme }) => ({
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("");
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+
+  const renderDrawer = (
+    <Box onClick={handleDrawerToggle} sx={{ display: "flex", flexDirection: "column", padding: "1.5rem 3rem", gap: "1rem" }}>
+      <NavLink
+        disableRipple
+        href="#skills"
+        onClick={() => setActiveLink("skills")}
+        className={activeLink === "skills" ? "active" : ""}
+      >
+        skills
+      </NavLink>
+      <NavLink
+        disableRipple
+        href="#projects"
+        onClick={() => setActiveLink("projects")}
+        className={activeLink === "projects" ? "active" : ""}
+      >
+        projects
+      </NavLink>
+      <NavLink disableRipple>contact</NavLink>
+    </Box>
+  );
+
   return (
-    <StyledBox>
-      <Stack direction="row" gap={3}>
-        <NavLink
-          disableRipple
-          href="#skills"
-          onClick={() => setActiveLink("skills")}
-          className={activeLink === "skills" ? "active" : ""}
+    <Box sx={{ display: "flex" }}>
+      <AppBar component="nav" sx={{ background: "transparent", boxShadow: "none" }}>
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: { sm: "flex-start", md: "flex-end", lg: "flex-end" },
+          }}
         >
-          skills
-        </NavLink>
-        <NavLink
-          disableRipple
-          href="#projects"
-          onClick={() => setActiveLink("projects")}
-          className={activeLink === "projects" ? "active" : ""}
+          <IconButton
+            aria-label="Open Menu"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ color: "#FFFFFF", display: { md: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Stack direction="row" gap={3} sx={{ display: { xs: "none", md: "flex" }}}>
+            <NavLink
+              disableRipple
+              href="#skills"
+              onClick={() => setActiveLink("skills")}
+              className={activeLink === "skills" ? "active" : ""}
+            >
+              skills
+            </NavLink>
+            <NavLink
+              disableRipple
+              href="#projects"
+              onClick={() => setActiveLink("projects")}
+              className={activeLink === "projects" ? "active" : ""}
+            >
+              projects
+            </NavLink>
+            <NavLink disableRipple>contact</NavLink>
+          </Stack>
+        </Toolbar>
+      </AppBar>
+      <nav>
+        <Drawer
+          variant="temporary"
+          open={drawerOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{ keepMounted: true }}
         >
-          projects
-        </NavLink>
-        <NavLink disableRipple>contact</NavLink>
-      </Stack>
-    </StyledBox>
+          {renderDrawer}
+        </Drawer>
+      </nav>
+    </Box>
   );
 };
 

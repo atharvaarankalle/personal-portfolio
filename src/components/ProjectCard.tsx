@@ -43,23 +43,37 @@ const StyledLink = styled(Link)(({ theme }) => ({
   },
 }));
 
+const StyledBox = styled(Box)({
+    display: "flex",
+    justifyContent: "flex-end",
+    "@media (max-width: 1200px)": {
+        justifyContent: "flex-start"
+    }
+});
+
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <StyledCard>
       <CardContent
         sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
       >
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <StyledLink
-            href={project.url !== "#" ? project.url : undefined}
-            target="_blank"
-          >
-            <Typography variant="h5" fontWeight="bold">
-              {project.title}
-            </Typography>
-          </StyledLink>
-          <Typography variant="h6">{project.year}</Typography>
-        </Box>
+        <Grid container rowGap={1}>
+          <Grid item xs={12} lg={9}>
+            <StyledLink
+              href={project.url !== "#" ? project.url : undefined}
+              target="_blank"
+            >
+              <Typography variant="h5" fontWeight="bold">
+                {project.title}
+              </Typography>
+            </StyledLink>
+          </Grid>
+          <Grid item md={12} lg={3}>
+            <StyledBox>
+              <Typography variant="h6">{project.year}</Typography>
+            </StyledBox>
+          </Grid>
+        </Grid>
         <Typography variant="body1" textAlign="justify">
           {project.description}
         </Typography>
@@ -70,7 +84,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           fontWeight="bold"
           sx={{ paddingBottom: "0.5rem" }}
         >
-          Technologies:
+          Technologies
         </Typography>
         <Grid container spacing={1}>
           {project.technologies.map((technology) => (

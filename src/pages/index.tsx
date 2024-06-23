@@ -1,23 +1,21 @@
-import { Box, styled } from "@mui/material";
+import { Grid } from "@mui/material";
 import ProfileSummary from "../components/ProfileSummary";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 
-const StyledBox = styled(Box)({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  height: "100%",
-  alignItems: "center",
-});
-
 const LandingPage = () => {
   return (
-    <StyledBox>
-      <ProfileSummary />
-      <Skills />
-      <Projects />
-    </StyledBox>
+    <Grid container spacing={6}>
+      <Grid item xs={12}>
+        <ProfileSummary />
+      </Grid>
+      <Grid item xs={12}>
+        <Skills />
+      </Grid>
+      <Grid item xs={12}>
+        <Projects />
+      </Grid>
+    </Grid>
   );
 };
 
