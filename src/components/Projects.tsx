@@ -20,16 +20,23 @@ const StyledCard = styled(Card)(({ theme }) => ({
   opacity: 0.9,
   color: "#FFFFFF",
   width: "55%",
-  padding: 20,
-  borderRadius: 10,
+  padding: "0.5rem",
+  borderRadius: "1rem",
   boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
   display: "flex",
   flexDirection: "column",
 }));
 
+const StyledTypography = styled(Typography)({
+  paddingBottom: "2rem",
+  "@media (max-width: 1200px)": {
+    fontSize: "2rem"
+  }
+});
+
 const projects = [
   {
-    title: "Personal Portfolio Website",
+    title: "Portfolio Website",
     url: "https://github.com/atharvaarankalle/personal-portfolio",
     year: "2024",
     description:
@@ -76,13 +83,9 @@ const Projects = () => {
     <StyledBox id="projects">
       <StyledCard>
         <CardContent>
-          <Typography
-            variant="h3"
-            fontWeight="bold"
-            sx={{ paddingBottom: "2rem" }}
-          >
+          <StyledTypography variant="h3" fontWeight="bold">
             Projects
-          </Typography>
+          </StyledTypography>
           <Grid container spacing={5}>
             {projects.map((project) => (
               <Grid
