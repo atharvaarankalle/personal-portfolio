@@ -1,5 +1,14 @@
-import { AppBar, Box, Button, Drawer, IconButton, Stack, Toolbar, styled } from "@mui/material";
-import { useState } from "react";
+import {
+  AppBar,
+  Box,
+  Button,
+  Drawer,
+  IconButton,
+  Stack,
+  Toolbar,
+  styled,
+} from "@mui/material";
+import { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 
 const NavLink = styled(Button)(({ theme }) => ({
@@ -10,6 +19,7 @@ const NavLink = styled(Button)(({ theme }) => ({
   textTransform: "none",
   "&:hover": {
     color: theme.palette.mutedPurple.main,
+    backgroundColor: "transparent",
   },
   "&::before": {
     content: "''",
@@ -38,13 +48,33 @@ const NavLink = styled(Button)(({ theme }) => ({
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      setIsScrolled(offset > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
   };
 
   const renderDrawer = (
-    <Box onClick={handleDrawerToggle} sx={{ display: "flex", flexDirection: "column", padding: "1.5rem 3rem", gap: "1rem" }}>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        padding: "1.5rem 3rem",
+        gap: "1rem",
+      }}
+    >
       <NavLink
         disableRipple
         href="#skills"
@@ -67,11 +97,30 @@ const Navbar = () => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar component="nav" sx={{ background: "transparent", boxShadow: "none" }}>
+      <AppBar
+        component="nav"
+        sx={{
+          boxShadow: "none",
+          padding: "1rem",
+          "&.navbarSolid": {
+            backgroundColor: "#24183D",
+            transition: "background-color 0.5s ease",
+          },
+          "&.navbarTransparent": {
+            backgroundColor: "transparent",
+            transition: "background-color 0.5s ease",
+          },
+        }}
+        className={isScrolled ? "navbarSolid" : "navbarTransparent"}
+      >
         <Toolbar
           sx={{
             display: "flex",
-            justifyContent: { sm: "flex-start", md: "flex-end", lg: "flex-end" },
+            justifyContent: {
+              sm: "flex-start",
+              md: "flex-end",
+              lg: "flex-end",
+            },
           }}
         >
           <IconButton
@@ -82,7 +131,11 @@ const Navbar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Stack direction="row" gap={3} sx={{ display: { xs: "none", md: "flex" }}}>
+          <Stack
+            direction="row"
+            gap={3}
+            sx={{ display: { xs: "none", md: "flex" } }}
+          >
             <NavLink
               disableRipple
               href="#skills"
