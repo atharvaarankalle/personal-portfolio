@@ -16,6 +16,7 @@ export const colors = {
     lightPurple: '#8237eb',
     lighestPurple: '#d8b8ff',
     mutedPurple: '#7f64bd',
+    darkMutedPurple: '#624d91'
 }
 
 export const theme = createTheme({
@@ -31,7 +32,8 @@ export const theme = createTheme({
             paper: colors.darkPurple
         },
         mutedPurple: {
-            main: colors.mutedPurple
+            main: colors.mutedPurple,
+            dark: colors.darkMutedPurple
         }
     },
     typography: {

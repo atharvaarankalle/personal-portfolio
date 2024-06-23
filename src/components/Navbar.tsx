@@ -56,7 +56,14 @@ const Navbar = () => {
         >
           skills
         </NavLink>
-        <NavLink disableRipple>projects</NavLink>
+        <NavLink
+          disableRipple
+          href="#projects"
+          onClick={() => setActiveLink("projects")}
+          className={activeLink === "projects" ? "active" : ""}
+        >
+          projects
+        </NavLink>
         <NavLink disableRipple>contact</NavLink>
       </Stack>
     </StyledBox>
