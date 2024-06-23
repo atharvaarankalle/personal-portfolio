@@ -14,9 +14,13 @@ const StyledAvatar = styled(Avatar)({
     height: 350,
     marginTop: "5rem"
   },
-  "@media (max-width: 600px)": {
+  "@media (max-width: 550px)": {
     width: 300,
     height: 300,
+  },
+  "@media (max-width: 350px)": {
+    width: 200,
+    height: 200,
   },
 });
 

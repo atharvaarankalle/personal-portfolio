@@ -13,11 +13,11 @@ const StyledCard = styled(Card)(({ theme }) => ({
   opacity: 0.9,
   color: "#FFFFFF",
   width: "55%",
-  padding: 20,
-  borderRadius: 10,
+  padding: "0.5rem",
+  borderRadius: "1rem",
   boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
   display: "flex",
-  flexDirection: "column"
+  flexDirection: "column",
 }));
 
 const frontendSkills = ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Vue", "Material UI"];

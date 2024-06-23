@@ -23,8 +23,8 @@ const StyledCard = styled(Card)(({ theme }) => ({
   backgroundColor: theme.palette.mutedPurple.dark,
   color: "#FFFFFF",
   width: "100%",
-  padding: 20,
-  borderRadius: 10,
+  padding: "0.5rem",
+  borderRadius: "1rem",
   boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
   display: "flex",
   flexDirection: "column",
@@ -41,14 +41,17 @@ const StyledLink = styled(Link)(({ theme }) => ({
     color: theme.palette.secondary.main,
     textDecorationColor: theme.palette.secondary.main,
   },
+  "@media (max-width: 550px)": {
+    textDecorationThickness: "0.1rem"
+  }
 }));
 
 const StyledBox = styled(Box)({
-    display: "flex",
-    justifyContent: "flex-end",
-    "@media (max-width: 1200px)": {
-        justifyContent: "flex-start"
-    }
+  display: "flex",
+  justifyContent: "flex-end",
+  "@media (max-width: 1200px)": {
+    justifyContent: "flex-start",
+  },
 });
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
@@ -63,18 +66,44 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               href={project.url !== "#" ? project.url : undefined}
               target="_blank"
             >
-              <Typography variant="h5" fontWeight="bold">
+              <Typography
+                variant="h5"
+                fontWeight="bold"
+                sx={{
+                  "@media (max-width: 550px)": {
+                    fontSize: "1rem",
+                  },
+                }}
+              >
                 {project.title}
               </Typography>
             </StyledLink>
           </Grid>
           <Grid item md={12} lg={3}>
             <StyledBox>
-              <Typography variant="h6">{project.year}</Typography>
+              <Typography
+                variant="h6"
+                sx={{
+                  "@media (max-width: 550px)": {
+                    fontSize: "1rem",
+                  },
+                }}
+              >
+                {project.year}
+              </Typography>
             </StyledBox>
           </Grid>
         </Grid>
-        <Typography variant="body1" textAlign="justify">
+        <Typography
+          variant="body1"
+          textAlign="justify"
+          sx={{
+            "@media (max-width: 550px)": {
+              fontSize: "0.7rem",
+              textAlign: "left",
+            },
+          }}
+        >
           {project.description}
         </Typography>
       </CardContent>
@@ -89,7 +118,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         <Grid container spacing={1}>
           {project.technologies.map((technology) => (
             <Grid item key={technology}>
-              <TechnologyChip technologyName={technology} />
+              <TechnologyChip technologyName={technology} projectsChip />
             </Grid>
           ))}
         </Grid>
