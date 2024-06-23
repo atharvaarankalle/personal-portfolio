@@ -1,12 +1,13 @@
 import { Box, Button, Stack, styled } from "@mui/material";
+import { useState } from "react";
 
 const StyledBox = styled(Box)({
-    position: "fixed",
-    top: 20,
-    right: 20,
-    width: "100%",
-    display: "flex",
-    justifyContent: "end",
+  position: "fixed",
+  top: 20,
+  right: 20,
+  width: "100%",
+  display: "flex",
+  justifyContent: "end",
 });
 
 const NavLink = styled(Button)(({ theme }) => ({
@@ -33,18 +34,33 @@ const NavLink = styled(Button)(({ theme }) => ({
     visibility: "visible",
     width: "100%",
   },
+  "&.active": {
+    color: theme.palette.mutedPurple.main,
+    "&::before": {
+      visibility: "visible",
+      width: "100%",
+    },
+  },
 }));
 
 const Navbar = () => {
-    return (
-      <StyledBox>
-        <Stack direction="row" gap={3}>
-          <NavLink disableRipple href="#skills">skills</NavLink>
-          <NavLink disableRipple>projects</NavLink>
-          <NavLink disableRipple>contact</NavLink>
-        </Stack>
-      </StyledBox>
-    );
-}
+  const [activeLink, setActiveLink] = useState("");
+  return (
+    <StyledBox>
+      <Stack direction="row" gap={3}>
+        <NavLink
+          disableRipple
+          href="#skills"
+          onClick={() => setActiveLink("skills")}
+          className={activeLink === "skills" ? "active" : ""}
+        >
+          skills
+        </NavLink>
+        <NavLink disableRipple>projects</NavLink>
+        <NavLink disableRipple>contact</NavLink>
+      </Stack>
+    </StyledBox>
+  );
+};
 
 export default Navbar;
