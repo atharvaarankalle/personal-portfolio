@@ -28,7 +28,7 @@ const AboutMeTextTypography = styled(Typography)({
 
 const ProfileSummary = () => {
   return (
-    <Stack direction="row" gap={7} sx={{ maxWidth: "65%", alignItems: "center" }}>
+    <Stack direction="row" gap={7} sx={{ height: "100vh", maxWidth: "65%", alignItems: "center" }}>
       <StyledAvatar src={profilePicture} alt="Atharva Arankalle" />
       <Box>
         <Stack direction="row" gap={2}>
