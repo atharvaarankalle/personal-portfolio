@@ -130,7 +130,11 @@ const Navbar = () => {
             aria-label="Open Menu"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ color: "#FFFFFF", display: { md: "none" }, paddingRight: "1rem" }}
+            sx={{
+              color: "#FFFFFF",
+              display: { md: "none" },
+              paddingRight: "1rem",
+            }}
           >
             <MenuIcon />
           </IconButton>
@@ -140,14 +144,23 @@ const Navbar = () => {
             sx={{ visibility: isScrolled ? "show" : "hidden" }}
             gap={2}
           >
-            <IconButton sx={{ padding: 0 }} href="#" onClick={() => setActiveLink("")}>
+            <IconButton
+              sx={{ padding: 0 }}
+              href="#"
+              onClick={() => setActiveLink("")}
+            >
               <Avatar src={profilePicture} />
             </IconButton>
-            <Typography variant="h5" sx={{ 
-              "@media (max-width: 550px)": {
-                fontSize: "1rem",
-              }
-            }}>Atharva Arankalle</Typography>
+            <Typography
+              variant="h5"
+              sx={{
+                "@media (max-width: 550px)": {
+                  fontSize: "1rem",
+                },
+              }}
+            >
+              Atharva Arankalle
+            </Typography>
           </Stack>
           <Stack
             direction="row"
@@ -170,7 +183,14 @@ const Navbar = () => {
             >
               projects
             </NavLink>
-            <NavLink disableRipple>contact</NavLink>
+            <NavLink
+              disableRipple
+              href="#contact"
+              onClick={() => setActiveLink("contact")}
+              className={activeLink === "contact" ? "active" : ""}
+            >
+              contact
+            </NavLink>
           </Stack>
         </Toolbar>
       </AppBar>

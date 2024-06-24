@@ -18,7 +18,17 @@ const StyledCard = styled(Card)(({ theme }) => ({
   boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
   display: "flex",
   flexDirection: "column",
+  "@media (max-width: 550px)": {
+    width: "75%"
+  }
 }));
+
+const StyledTypography = styled(Typography)({
+  paddingBottom: "2rem",
+  "@media (max-width: 1200px)": {
+    fontSize: "2rem",
+  },
+});
 
 const frontendSkills = ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Vue", "Material UI"];
 
@@ -33,7 +43,7 @@ const Skills = () => {
       <StyledBox id="skills">
         <StyledCard>
           <CardContent>
-            <Typography variant="h3" fontWeight="bold" sx={{ paddingBottom: "1rem" }}>Skills</Typography>
+            <StyledTypography variant="h3" fontWeight="bold" sx={{ paddingBottom: "1rem" }}>Skills</StyledTypography>
             <Typography variant="h5" fontWeight="bold" color="secondary">Frontend</Typography>
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: "1rem", paddingTop: "0.75rem" }}>
               {frontendSkills.map((skill) => (
