@@ -1,6 +1,7 @@
 html, body {
     margin: 0;
     scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
     height: 100%;
 }
 

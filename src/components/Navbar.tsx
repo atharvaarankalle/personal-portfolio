@@ -99,7 +99,7 @@ const Navbar = () => {
   );
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <>
       <AppBar
         component="nav"
         sx={{
@@ -204,7 +204,7 @@ const Navbar = () => {
           {renderDrawer}
         </Drawer>
       </nav>
-    </Box>
+    </>
   );
 };
 
