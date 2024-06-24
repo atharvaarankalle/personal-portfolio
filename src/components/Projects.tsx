@@ -25,6 +25,9 @@ const StyledCard = styled(Card)(({ theme }) => ({
   boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
   display: "flex",
   flexDirection: "column",
+  "@media (max-width: 550px)": {
+    width: "75%",
+  },
 }));
 
 const StyledTypography = styled(Typography)({
