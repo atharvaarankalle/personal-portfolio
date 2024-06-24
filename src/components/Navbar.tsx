@@ -94,7 +94,14 @@ const Navbar = () => {
       >
         projects
       </NavLink>
-      <NavLink disableRipple>contact</NavLink>
+      <NavLink
+        disableRipple
+        href="#contact"
+        onClick={() => setActiveLink("contact")}
+        className={activeLink === "contact" ? "active" : ""}
+      >
+        contact
+      </NavLink>
     </Box>
   );
 
