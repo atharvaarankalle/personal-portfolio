@@ -10,3 +10,24 @@ html, body {
     height: 100%;
     z-index: -1;
 }
+
+/* Changing scrollbar default style for Webkit Browsers */
+::-webkit-scrollbar {
+    width: 0.65rem;
+}
+
+/* Scrollbar track style */
+::-webkit-scrollbar-track {
+    background: #0a0019;
+}
+
+/* Scrollbar handle style */
+::-webkit-scrollbar-thumb {
+    background: #624d91;
+    border-radius: 0.5rem;
+}
+
+/* Scrollbar on hover colour */
+::-webkit-scrollbar-thumb:hover {
+    background: #d8b8ff;
+}
