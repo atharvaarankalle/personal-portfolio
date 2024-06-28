@@ -48,7 +48,7 @@ const projects = [
   },
   {
     title: "DiscOvery",
-    url: "#",
+    url: "https://github.com/atharvaarankalle/discovery",
     year: "2024",
     description:
       "This project is a web application made for music lovers. It allows users to discover new music together, by suggesting a song in response to a given daily prompt, generated using AI. The application has been built using React and TypeScript in the frontend, Express and Node.js in the backend, and MongoDB as the database. The application has been styled using Material UI to provide a clean and intuitive user interface. The application also uses the Spotify API to allow users to search for and listen to suggested songs directly on the application. The OpenAI API is used to generate daily prompts for users to respond to.",
