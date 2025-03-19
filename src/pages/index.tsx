@@ -28,7 +28,7 @@ const LandingPage = () => {
       </Grid>
       <Grid item xs={12} sx={{ paddingBottom: "1rem" }}>
         <StyledTypography variant="h6" textAlign="center" color="#FFFFFF">
-          &copy; 2024 Atharva Arankalle. All rights reserved.
+          &copy; 2025 Atharva Arankalle. All rights reserved.
         </StyledTypography>
       </Grid>
     </Grid>
