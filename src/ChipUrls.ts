@@ -3,6 +3,7 @@ const BadgeUrls: { [key: string]: string } = {
     Confluence: "https://img.shields.io/badge/Confluence-%23172B4D?style=for-the-badge&logo=confluence&logoColor=%23FFFFFF",
     CSS: "https://img.shields.io/badge/CSS-%231572B6?style=for-the-badge&logo=css3&logoColor=%23FFFFFF",
     Express: "https://img.shields.io/badge/Express-%23000000?style=for-the-badge&logo=express",
+    Figma: "https://img.shields.io/badge/Figma-%23000000?style=for-the-badge&logo=figma",
     Firebase: "https://img.shields.io/badge/Firebase-%23DD2C00?style=for-the-badge&logo=firebase&logoColor=%23FFFFFF",
     Git: "https://img.shields.io/badge/Git-%23F05032?style=for-the-badge&logo=git&logoColor=%23FFFFFF",
     GitHub: "https://img.shields.io/badge/GitHub-%23181717?style=for-the-badge&logo=github&logoColor=%23FFFFFF",

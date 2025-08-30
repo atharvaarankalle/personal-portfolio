@@ -43,7 +43,7 @@ const projects = [
     url: "https://github.com/atharvaarankalle/personal-portfolio",
     year: "Ongoing",
     description:
-      "This project is my personal portfolio website. This website is my digital portfolio, allowing me to practice and develop my frontend web development skills while also showcasing my projects and skills. This website has been built using React with TypeScript to create a responsive and robust user interface. The website is styled using Material UI, to provide for an aesthetically pleasing user interface which is consistent with Material Design standards.",
+      "This project is my personal portfolio website. This website is my digital portfolio, allowing me to practice and develop my frontend web development skills while also showcasing my projects and skills.This website has been built using React with TypeScript to create a responsive and robust user interface. The website is styled using Material UI, to provide for an aesthetically pleasing user interface which is consistent with Material Design standards.",
     technologies: ["HTML", "CSS", "TypeScript", "React", "Material UI"],
   },
   {
@@ -83,7 +83,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <StyledBox id="projects">
+    <StyledBox>
       <StyledCard>
         <CardContent>
           <StyledTypography variant="h3" fontWeight="bold">

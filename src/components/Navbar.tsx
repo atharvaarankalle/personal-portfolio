@@ -10,9 +10,10 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import profilePicture from "../assets/profile-picture.jpg";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const NavLink = styled(Button)(({ theme }) => ({
   width: "auto",
@@ -49,20 +50,9 @@ const NavLink = styled(Button)(({ theme }) => ({
 }));
 
 const Navbar = () => {
-  const [activeLink, setActiveLink] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      setIsScrolled(offset > 0);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
@@ -80,25 +70,22 @@ const Navbar = () => {
     >
       <NavLink
         disableRipple
-        href="#skills"
-        onClick={() => setActiveLink("skills")}
-        className={activeLink === "skills" ? "active" : ""}
+        onClick={() => navigate("/about")}
+        className={pathname === "/about" ? "active" : ""}
       >
-        skills
+        about
       </NavLink>
       <NavLink
         disableRipple
-        href="#projects"
-        onClick={() => setActiveLink("projects")}
-        className={activeLink === "projects" ? "active" : ""}
+        onClick={() => navigate("/projects")}
+        className={pathname === "/projects" ? "active" : ""}
       >
         projects
       </NavLink>
       <NavLink
         disableRipple
-        href="#contact"
-        onClick={() => setActiveLink("contact")}
-        className={activeLink === "contact" ? "active" : ""}
+        onClick={() => navigate("/contact")}
+        className={pathname === "/contact" ? "active" : ""}
       >
         contact
       </NavLink>
@@ -109,6 +96,7 @@ const Navbar = () => {
     <>
       <AppBar
         component="nav"
+        position="sticky"
         sx={{
           boxShadow: "none",
           padding: "1rem",
@@ -121,7 +109,7 @@ const Navbar = () => {
             transition: "background-color 0.5s ease",
           },
         }}
-        className={isScrolled ? "navbarSolid" : "navbarTransparent"}
+        className="navbarSolid"
       >
         <Toolbar
           sx={{
@@ -148,14 +136,11 @@ const Navbar = () => {
           <Stack
             direction="row"
             alignItems="center"
-            sx={{ visibility: isScrolled ? "show" : "hidden" }}
             gap={2}
+            onClick={() => navigate("/")}
+            sx={{ "&:hover": { cursor: "pointer" } }}
           >
-            <IconButton
-              sx={{ padding: 0 }}
-              href="#"
-              onClick={() => setActiveLink("")}
-            >
+            <IconButton sx={{ padding: 0 }}>
               <Avatar src={profilePicture} />
             </IconButton>
             <Typography
@@ -176,41 +161,36 @@ const Navbar = () => {
           >
             <NavLink
               disableRipple
-              href="#skills"
-              onClick={() => setActiveLink("skills")}
-              className={activeLink === "skills" ? "active" : ""}
+              onClick={() => navigate("/about")}
+              className={pathname === "/about" ? "active" : ""}
             >
-              skills
+              about
             </NavLink>
             <NavLink
               disableRipple
-              href="#projects"
-              onClick={() => setActiveLink("projects")}
-              className={activeLink === "projects" ? "active" : ""}
+              onClick={() => navigate("/projects")}
+              className={pathname === "/projects" ? "active" : ""}
             >
               projects
             </NavLink>
             <NavLink
               disableRipple
-              href="#contact"
-              onClick={() => setActiveLink("contact")}
-              className={activeLink === "contact" ? "active" : ""}
+              onClick={() => navigate("/contact")}
+              className={pathname === "/contact" ? "active" : ""}
             >
               contact
             </NavLink>
           </Stack>
         </Toolbar>
       </AppBar>
-      <nav>
-        <Drawer
-          variant="temporary"
-          open={drawerOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{ keepMounted: true }}
-        >
-          {renderDrawer}
-        </Drawer>
-      </nav>
+      <Drawer
+        variant="temporary"
+        open={drawerOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{ keepMounted: true }}
+      >
+        {renderDrawer}
+      </Drawer>
     </>
   );
 };

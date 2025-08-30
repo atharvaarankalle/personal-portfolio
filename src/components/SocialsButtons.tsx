@@ -19,7 +19,7 @@ const SocialsButtons = () => {
   };
 
   return (
-    <Stack direction="row" gap={2}>
+    <Stack direction="row" gap={2} paddingTop="1rem">
       <StyledTooltip
         title={<Typography sx={{ fontSize: "1rem" }}>LinkedIn</Typography>}
         placement="bottom"

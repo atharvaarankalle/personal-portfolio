@@ -62,7 +62,7 @@ const StyledLink = styled(Link)(({ theme }) => ({
 
 const Contact = () => {
   return (
-    <StyledBox id="contact">
+    <StyledBox>
       <StyledCard>
         <CardContent>
           <StyledTypography
