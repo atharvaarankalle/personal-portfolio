@@ -61,7 +61,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
       >
         <Grid container rowGap={1}>
-          <Grid item xs={12} lg={9}>
+          <Grid size={{ xs: 12, lg: 9 }}>
             <StyledLink
               href={project.url !== "#" ? project.url : undefined}
               target="_blank"
@@ -79,7 +79,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               </Typography>
             </StyledLink>
           </Grid>
-          <Grid item md={12} lg={3}>
+          <Grid size={{ md: 12, lg: 3}}>
             <StyledBox>
               <Typography
                 variant="h6"
@@ -117,7 +117,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         </Typography>
         <Grid container spacing={1}>
           {project.technologies.map((technology) => (
-            <Grid item key={technology}>
+            <Grid key={technology}>
               <TechnologyChip technologyName={technology} projectsChip />
             </Grid>
           ))}

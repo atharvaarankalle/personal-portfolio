@@ -24,7 +24,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   opacity: 0.9,
   color: "#FFFFFF",
-  width: "55%",
+  width: "65%",
   padding: "0.5rem",
   borderRadius: "1rem",
   boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",

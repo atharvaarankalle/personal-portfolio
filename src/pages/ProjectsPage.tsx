@@ -1,5 +1,6 @@
 import { Box, styled } from "@mui/material";
 import Projects from "../components/Projects";
+import Skills from "../components/Skills";
 
 const ProjectsPage = () => {
   const StyledBox = styled(Box)({
@@ -14,6 +15,7 @@ const ProjectsPage = () => {
 
   return (
     <StyledBox>
+      <Skills />
       <Projects />
     </StyledBox>
   );

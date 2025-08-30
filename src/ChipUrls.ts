@@ -1,7 +1,7 @@
 const BadgeUrls: { [key: string]: string } = {
     "C#": "https://img.shields.io/badge/C%23-%2338008F?style=for-the-badge",
     Confluence: "https://img.shields.io/badge/Confluence-%23172B4D?style=for-the-badge&logo=confluence&logoColor=%23FFFFFF",
-    CSS: "https://img.shields.io/badge/CSS-%231572B6?style=for-the-badge&logo=css3&logoColor=%23FFFFFF",
+    CSS: "https://img.shields.io/badge/CSS-%23663399?style=for-the-badge&logo=css&logoColor=%23FFFFFF",
     Express: "https://img.shields.io/badge/Express-%23000000?style=for-the-badge&logo=express",
     Figma: "https://img.shields.io/badge/Figma-%23000000?style=for-the-badge&logo=figma",
     Firebase: "https://img.shields.io/badge/Firebase-%23DD2C00?style=for-the-badge&logo=firebase&logoColor=%23FFFFFF",

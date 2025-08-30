@@ -64,7 +64,7 @@ const Navbar = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        padding: "1.5rem 3rem",
+        padding: "1.5rem 5rem",
         gap: "1rem",
       }}
     >

@@ -19,7 +19,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   opacity: 0.9,
   color: "#FFFFFF",
-  width: "55%",
+  width: "65%",
   padding: "0.5rem",
   borderRadius: "1rem",
   boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
@@ -43,7 +43,7 @@ const projects = [
     url: "https://github.com/atharvaarankalle/personal-portfolio",
     year: "Ongoing",
     description:
-      "This project is my personal portfolio website. This website is my digital portfolio, allowing me to practice and develop my frontend web development skills while also showcasing my projects and skills.This website has been built using React with TypeScript to create a responsive and robust user interface. The website is styled using Material UI, to provide for an aesthetically pleasing user interface which is consistent with Material Design standards.",
+      "This project is my personal portfolio website. This website is my digital portfolio, allowing me to practice and develop my frontend web development skills while also showcasing my projects and skills. This website has been created using React with TypeScript to create a responsive and robust user interface. The website is styled using Material UI, to provide for an aesthetically pleasing user interface which is consistent with Material Design standards.",
     technologies: ["HTML", "CSS", "TypeScript", "React", "Material UI"],
   },
   {
@@ -51,7 +51,7 @@ const projects = [
     url: "https://github.com/atharvaarankalle/discovery",
     year: "2024",
     description:
-      "This project is a web application made for music lovers. It allows users to discover new music together, by suggesting a song in response to a given daily prompt, generated using AI. The application has been built using React and TypeScript in the frontend, Express and Node.js in the backend, and MongoDB as the database. The application has been styled using Material UI to provide a clean and intuitive user interface. The application also uses the Spotify API to allow users to search for and listen to suggested songs directly on the application. The OpenAI API is used to generate daily prompts for users to respond to.",
+      "This project is a web application made for music lovers. It allows users to discover new music together, by suggesting a song in response to a given daily prompt, generated using AI. The application has been created using React and TypeScript in the frontend, Express and Node.js in the backend, and MongoDB as the database. The application has been styled using Material UI to provide a clean and intuitive user interface. The application also uses the Spotify API to allow users to search for and listen to suggested songs directly on the application. The OpenAI API is used to generate daily prompts for users to respond to.",
     technologies: [
       "HTML",
       "CSS",
@@ -68,7 +68,7 @@ const projects = [
     url: "https://github.com/atharvaarankalle/skincredible",
     year: "2023",
     description:
-      "This project is an Android shopping application made for users' every skincare need. It allows users to browse and read about various skincare products, add them to their cart, and mock purchase them. The application has been built in Android Studio, using XML for the frontend, Java for the backend and Google Firebase for the database.",
+      "This project is an Android shopping application made for users' every skincare need. It allows users to browse and read about various skincare products, add them to their cart, and mock purchase them. The application has been created in Android Studio, using XML for the frontend, Java for the backend and Google Firebase for the database.",
     technologies: ["Java", "XML", "Firebase"],
   },
   {
@@ -76,7 +76,7 @@ const projects = [
     url: "https://github.com/atharvaarankalle/quick-draw",
     year: "2022",
     description:
-      "This project is a desktop drawing game for young children and teenagers. The aim of the game is to draw an image well enough for a machine learning model to correctly guess what the image is. The game has been built using Java and JavaFX to create a simple and intuitive user interface. The game uses a pre-trained machine learning model to guess the user's drawings, providing instant feedback to the user.",
+      "This project is a desktop drawing game for young children and teenagers. The aim of the game is to draw an image well enough for a machine learning model to correctly guess what the image is. The game has been created using Java and JavaFX to create a simple and intuitive user interface. The game uses a pre-trained machine learning model to guess the user's drawings, providing instant feedback to the user.",
     technologies: ["Java", "JavaFX"],
   },
 ];
@@ -93,9 +93,7 @@ const Projects = () => {
             {projects.map((project) => (
               <Grid
                 key={project.title}
-                item
-                md={12}
-                lg={6}
+                size={{ md: 12, lg: 6 }}
                 sx={{ display: "flex", justifyContent: "center" }}
               >
                 <ProjectCard project={project} />

@@ -17,9 +17,7 @@ const TechnologyChip = ({
       src={BadgeUrls[technologyName]}
       sx={{
         borderRadius: "0.5rem",
-        "@media (max-width: 550px)": {
-          width: projectsChip ? "80%" : undefined,
-        }
+        width: projectsChip ? "100%" : undefined,
       }}
     ></Box>
   );

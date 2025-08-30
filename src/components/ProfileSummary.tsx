@@ -65,7 +65,7 @@ const ProfileSummary = () => {
           alignItems: "center",
         }}
       >
-        <Stack direction="row" gap={2} width="100%" justifyContent="center">
+        <Stack direction="row" gap={{ xs: 1, md: 2 }} width="100%" justifyContent="center">
           <HeadingTextTypography>Hi, I'm</HeadingTextTypography>
           <NameTextTypography>Atharva</NameTextTypography>
         </Stack>
