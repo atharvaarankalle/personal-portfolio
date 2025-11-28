@@ -1,5 +1,5 @@
 import { Box, styled } from "@mui/material";
-import Projects from "../components/Projects";
+import Projects from "../components/Projects/Projects";
 import Skills from "../components/Skills";
 
 const ProjectsPage = () => {

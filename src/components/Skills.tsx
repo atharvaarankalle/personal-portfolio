@@ -31,9 +31,11 @@ const frontendSkills = [
   "Material UI",
 ];
 
-const backendSkills = ["Node.js", "Express", "Python", "Java", "C#"];
+const backendSkills = ["Node.js", "Express", "Python", "Java", ".NET"];
 
 const dataSkills = ["SQL", "MongoDB", "Firebase"];
+
+const cloudSkills = ["AWS", "Azure"];
 
 const toolsSkills = ["Git", "GitHub", "Figma", "GitLab", "Jira", "Confluence"];
 
@@ -67,11 +69,7 @@ const Skills = () => {
             </Grid>
           </Grid>
           <Grid size={{ sm: 12, md: 6 }}>
-            <Typography
-              variant="h5"
-              fontWeight="bold"
-              color="secondary"
-            >
+            <Typography variant="h5" fontWeight="bold" color="secondary">
               Backend
             </Typography>
             <Grid
@@ -103,6 +101,28 @@ const Skills = () => {
               sx={{ paddingTop: "0.75rem" }}
             >
               {dataSkills.map((skill) => (
+                <Grid key={skill} size="auto">
+                  <TechnologyChip technologyName={skill} />
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+          <Grid size={{ sm: 12, md: 6 }}>
+            <Typography
+              variant="h5"
+              fontWeight="bold"
+              color="secondary"
+              sx={{ paddingTop: "2rem" }}
+            >
+              Cloud
+            </Typography>
+            <Grid
+              container
+              rowGap={2}
+              columnGap={2}
+              sx={{ paddingTop: "0.75rem" }}
+            >
+              {cloudSkills.map((skill) => (
                 <Grid key={skill} size="auto">
                   <TechnologyChip technologyName={skill} />
                 </Grid>

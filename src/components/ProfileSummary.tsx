@@ -1,4 +1,5 @@
 import { Avatar, Box, Stack, Typography, styled } from "@mui/material";
+import { motion } from "framer-motion";
 import profilePicture from "../assets/profile-picture.jpg";
 import SocialsButtons from "./SocialsButtons";
 
@@ -56,7 +57,9 @@ const ProfileSummary = () => {
       }}
       gap={{ md: "2rem", lg: "5rem" }}
     >
-      <StyledAvatar src={profilePicture} alt="Atharva Arankalle" />
+      <motion.div layoutId="profile-photo">
+        <StyledAvatar src={profilePicture} alt="Atharva Arankalle" />
+      </motion.div>
       <Box
         sx={{
           display: "flex",
@@ -65,7 +68,12 @@ const ProfileSummary = () => {
           alignItems: "center",
         }}
       >
-        <Stack direction="row" gap={{ xs: 1, md: 2 }} width="100%" justifyContent="center">
+        <Stack
+          direction="row"
+          gap={{ xs: 1, md: 2 }}
+          width="100%"
+          justifyContent="center"
+        >
           <HeadingTextTypography>Hi, I'm</HeadingTextTypography>
           <NameTextTypography>Atharva</NameTextTypography>
         </Stack>

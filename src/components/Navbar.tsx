@@ -10,6 +10,7 @@ import {
   Typography,
   styled,
 } from "@mui/material";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import profilePicture from "../assets/profile-picture.jpg";
@@ -100,16 +101,9 @@ const Navbar = () => {
         sx={{
           boxShadow: "none",
           padding: "1rem",
-          "&.navbarSolid": {
-            backgroundColor: "#24183D",
-            transition: "background-color 0.5s ease",
-          },
-          "&.navbarTransparent": {
-            backgroundColor: "transparent",
-            transition: "background-color 0.5s ease",
-          },
+          backgroundColor: "transparent",
         }}
-        className="navbarSolid"
+        className="navbarTransparent"
       >
         <Toolbar
           sx={{
@@ -141,14 +135,23 @@ const Navbar = () => {
             sx={{ "&:hover": { cursor: "pointer" } }}
           >
             <IconButton sx={{ padding: 0 }}>
-              <Avatar src={profilePicture} />
+              {pathname !== "/" && (
+                <motion.div
+                  layoutId="profile-photo"
+                  style={{ display: "flex" }}
+                >
+                  <Avatar src={profilePicture} />
+                </motion.div>
+              )}
             </IconButton>
             <Typography
-              variant="h5"
+              variant={pathname === "/" ? "h3" : "h5"}
               sx={{
                 "@media (max-width: 550px)": {
                   fontSize: "1rem",
                 },
+                color: pathname === "/" ? "secondary.main" : "white",
+                fontWeight: pathname === "/" ? 600 : "normal",
               }}
             >
               Atharva Arankalle

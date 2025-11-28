@@ -1,4 +1,5 @@
 import { Box, Card, CardContent, styled, Typography } from "@mui/material";
+import Experience from "../components/Experience/Experience";
 
 const StyledBox = styled(Box)({
   width: "100%",
@@ -76,7 +77,7 @@ const AboutPage = () => {
           </AboutMeTextTypography>
         </CardContent>
       </StyledCard>
-      {/* Experience timeline element */}
+      <Experience />
     </StyledBox>
   );
 };

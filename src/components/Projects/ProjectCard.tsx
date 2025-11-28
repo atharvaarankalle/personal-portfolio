@@ -7,7 +7,7 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import TechnologyChip from "./TechnologyChip";
+import TechnologyChip from "../TechnologyChip";
 
 interface ProjectCardProps {
   project: {
