@@ -10,19 +10,28 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import profilePicture from "../assets/profile-picture.jpg";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const NavLink = styled(Button)(({ theme }) => ({
   width: "auto",
   color: theme.palette.secondary.main,
-  fontSize: "1.75rem",
+  fontSize: "1.1rem",
+  [theme.breakpoints.up("lg")]: {
+    fontSize: "1.3rem",
+  },
+  [theme.breakpoints.up("xl")]: {
+    fontSize: "1.5rem",
+  },
   fontWeight: "bold",
   textTransform: "none",
   "&:hover": {
     color: theme.palette.mutedPurple.main,
     backgroundColor: "transparent",
+    textShadow: `0 0 10px ${theme.palette.mutedPurple.main}66`,
   },
   "&::before": {
     content: "''",
@@ -49,18 +58,18 @@ const NavLink = styled(Button)(({ theme }) => ({
 }));
 
 const Navbar = () => {
-  const [activeLink, setActiveLink] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      const offset = window.scrollY;
-      setIsScrolled(offset > 0);
+      // Trigger when scrolled more than 10 pixels
+      setIsScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -74,31 +83,28 @@ const Navbar = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        padding: "1.5rem 3rem",
+        padding: "1.5rem 2rem",
         gap: "1rem",
       }}
     >
       <NavLink
         disableRipple
-        href="#skills"
-        onClick={() => setActiveLink("skills")}
-        className={activeLink === "skills" ? "active" : ""}
+        onClick={() => navigate("/about")}
+        className={pathname === "/about" ? "active" : ""}
       >
-        skills
+        about
       </NavLink>
       <NavLink
         disableRipple
-        href="#projects"
-        onClick={() => setActiveLink("projects")}
-        className={activeLink === "projects" ? "active" : ""}
+        onClick={() => navigate("/projects")}
+        className={pathname === "/projects" ? "active" : ""}
       >
         projects
       </NavLink>
       <NavLink
         disableRipple
-        href="#contact"
-        onClick={() => setActiveLink("contact")}
-        className={activeLink === "contact" ? "active" : ""}
+        onClick={() => navigate("/contact")}
+        className={pathname === "/contact" ? "active" : ""}
       >
         contact
       </NavLink>
@@ -109,19 +115,17 @@ const Navbar = () => {
     <>
       <AppBar
         component="nav"
+        position="sticky"
         sx={{
-          boxShadow: "none",
-          padding: "1rem",
-          "&.navbarSolid": {
-            backgroundColor: "#24183D",
-            transition: "background-color 0.5s ease",
-          },
-          "&.navbarTransparent": {
-            backgroundColor: "transparent",
-            transition: "background-color 0.5s ease",
-          },
+          boxShadow: isScrolled ? "0 4px 20px rgba(0, 0, 0, 0.2)" : "none",
+          padding: "0.5rem 1rem",
+          backgroundColor: isScrolled ? "rgba(10, 0, 20, 0.8)" : "transparent",
+          backdropFilter: isScrolled ? "blur(10px)" : "none",
+          borderBottom: isScrolled
+            ? "1px solid rgba(127, 100, 189, 0.2)"
+            : "none",
+          transition: "all 0.3s ease-in-out",
         }}
-        className={isScrolled ? "navbarSolid" : "navbarTransparent"}
       >
         <Toolbar
           sx={{
@@ -148,22 +152,32 @@ const Navbar = () => {
           <Stack
             direction="row"
             alignItems="center"
-            sx={{ visibility: isScrolled ? "show" : "hidden" }}
             gap={2}
+            onClick={() => navigate("/")}
+            sx={{ "&:hover": { cursor: "pointer" } }}
           >
-            <IconButton
-              sx={{ padding: 0 }}
-              href="#"
-              onClick={() => setActiveLink("")}
-            >
-              <Avatar src={profilePicture} />
+            <IconButton sx={{ padding: 0 }}>
+              {pathname !== "/" && (
+                <motion.div
+                  layoutId="profile-photo"
+                  style={{ display: "flex" }}
+                >
+                  <Avatar src={profilePicture} />
+                </motion.div>
+              )}
             </IconButton>
             <Typography
-              variant="h5"
               sx={{
-                "@media (max-width: 550px)": {
-                  fontSize: "1rem",
+                fontSize: {
+                  xs: "1rem",
+                  sm: "1.2rem",
+                  md: pathname === "/" ? "1.8rem" : "1.4rem",
+                  lg: pathname === "/" ? "2.2rem" : "1.6rem",
                 },
+                color: pathname === "/" ? "secondary.main" : "white",
+                fontWeight: pathname === "/" ? 600 : 500,
+                whiteSpace: "nowrap",
+                transition: "all 0.3s ease",
               }}
             >
               Atharva Arankalle
@@ -171,46 +185,57 @@ const Navbar = () => {
           </Stack>
           <Stack
             direction="row"
-            gap={3}
+            gap={{ md: 2, lg: 4 }}
             sx={{ display: { xs: "none", md: "flex" } }}
+            component={motion.div}
+            initial={pathname === "/" ? "hidden" : "visible"}
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
+                  delayChildren: 0.8,
+                },
+              },
+            }}
           >
-            <NavLink
-              disableRipple
-              href="#skills"
-              onClick={() => setActiveLink("skills")}
-              className={activeLink === "skills" ? "active" : ""}
-            >
-              skills
-            </NavLink>
-            <NavLink
-              disableRipple
-              href="#projects"
-              onClick={() => setActiveLink("projects")}
-              className={activeLink === "projects" ? "active" : ""}
-            >
-              projects
-            </NavLink>
-            <NavLink
-              disableRipple
-              href="#contact"
-              onClick={() => setActiveLink("contact")}
-              className={activeLink === "contact" ? "active" : ""}
-            >
-              contact
-            </NavLink>
+            {[
+              { label: "about", path: "/about" },
+              { label: "projects", path: "/projects" },
+              { label: "contact", path: "/contact" },
+            ].map((item) => (
+              <motion.div
+                key={item.label}
+                variants={{
+                  hidden: { opacity: 0, y: 10 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <NavLink
+                  disableRipple
+                  onClick={() => navigate(item.path)}
+                  className={pathname === item.path ? "active" : ""}
+                >
+                  {item.label}
+                </NavLink>
+              </motion.div>
+            ))}
           </Stack>
         </Toolbar>
       </AppBar>
-      <nav>
-        <Drawer
-          variant="temporary"
-          open={drawerOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{ keepMounted: true }}
-        >
-          {renderDrawer}
-        </Drawer>
-      </nav>
+      <Drawer
+        variant="temporary"
+        open={drawerOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{ keepMounted: true }}
+      >
+        {renderDrawer}
+      </Drawer>
     </>
   );
 };

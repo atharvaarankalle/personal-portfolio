@@ -1,4 +1,5 @@
-import { Avatar, Box, Grid, Stack, Typography, styled } from "@mui/material";
+import { Avatar, Box, Stack, Typography, styled } from "@mui/material";
+import { motion } from "framer-motion";
 import profilePicture from "../assets/profile-picture.jpg";
 import SocialsButtons from "./SocialsButtons";
 
@@ -38,104 +39,107 @@ const NameTextTypography = styled(Typography)(({ theme }) => ({
   fontSize: "4rem",
   fontWeight: "bold",
   paddingBottom: "1rem",
-  width: "20%",
   "@media (max-width: 550px)": {
     fontSize: "2rem",
   },
 }));
 
-const AboutMeTextTypography = styled(Typography)({
-  maxWidth: "80%",
-  textAlign: "justify",
-  paddingTop: "0.5rem",
-  "@media (max-width: 550px)": {
-    fontSize: "0.8rem",
-  },
-});
-
 const ProfileSummary = () => {
   return (
     <Box
       sx={{
-        height: "100vh",
-        "@media (max-width: 550px)": {
-          height: "auto",
-          minHeight: "100vh",
-        },
+        display: "flex",
+        flexDirection: { xs: "column", lg: "row" },
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%",
+        width: "100%",
       }}
+      gap={{ md: "2rem", lg: "5rem" }}
     >
-      <Grid
-        container
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100%",
-          width: "100%",
+      <motion.div
+        layoutId="profile-photo"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{
+          scale: 1,
+          opacity: 1,
+          y: [0, -10, 0],
+        }}
+        transition={{
+          scale: { type: "spring", stiffness: 100, damping: 15, delay: 0.2 },
+          opacity: { duration: 0.5, delay: 0.2 },
+          y: {
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
         }}
       >
-        <Grid
-          item
-          md={12}
-          lg={3}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
+        <StyledAvatar src={profilePicture} alt="Atharva Arankalle" />
+      </motion.div>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        component={motion.div}
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.2,
+              delayChildren: 0.4,
+            },
+          },
+        }}
+      >
+        <Stack
+          direction="row"
+          gap={{ xs: 1, md: 2 }}
+          width="100%"
+          justifyContent="center"
+          component={motion.div}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0 },
           }}
         >
-          <StyledAvatar src={profilePicture} alt="Atharva Arankalle" />
-        </Grid>
-        <Grid item md={12} lg={4}>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Stack direction="row" gap={2}>
-              <HeadingTextTypography>Hi, I'm</HeadingTextTypography>
-              <NameTextTypography>Atharva</NameTextTypography>
-            </Stack>
-            <Typography
-              variant="h4"
-              color="secondary"
-              sx={{
-                "@media (max-width: 550px)": {
-                  fontSize: "1.5rem",
-                },
-              }}
-            >
-              Welcome to my portfolio!
-            </Typography>
-            <AboutMeTextTypography variant="body1" color="#fff">
-              As a motivated and passionate software engineer, my journey has
-              been marked by both comprehensive theoretical study, as well as
-              hands-on experience through my previous four internship roles. I
-              have honed my skills in full-stack web development using a variety
-              of technologies, and have also gained practical experience in
-              industry to compliment these skills. Both my studies and previous
-              roles have instilled in me a commitment to quality, a desire to
-              grow, and a collaborative spirit that aligns with the values of
-              forward-thinking organisations. I am eager to contribute
-              meaningfully to a team that values adaptability and a commitment
-              to excellence.
-            </AboutMeTextTypography>
-            <AboutMeTextTypography
-              variant="body1"
-              color="#fff"
-              sx={{ padding: "1rem 0" }}
-            >
-              My other hobbies include playing the guitar, or playing video
-              games with friends. I also enjoy watching movies and TV shows and
-              reading, and I'm always on the lookout for new recommendations.
-              I'm also currently learning both Hindi and Korean on Duolingo!
-            </AboutMeTextTypography>
-            <SocialsButtons />
-          </Box>
-        </Grid>
-      </Grid>
+          <HeadingTextTypography>Hi, I'm</HeadingTextTypography>
+          <NameTextTypography>Atharva</NameTextTypography>
+        </Stack>
+        <Typography
+          variant="h4"
+          textAlign="center"
+          width="100%"
+          color="secondary"
+          sx={{
+            "@media (max-width: 550px)": {
+              fontSize: "1.5rem",
+            },
+          }}
+          component={motion.div}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
+          Welcome to my portfolio!
+        </Typography>
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, scale: 0.8 },
+            visible: { opacity: 1, scale: 1 },
+          }}
+          transition={{ type: "spring", stiffness: 200, damping: 15 }}
+        >
+          <SocialsButtons />
+        </motion.div>
+      </Box>
     </Box>
   );
 };
