@@ -40,7 +40,7 @@ const BasePage = () => {
         </motion.div>
       </ContentBox>
       <StyledTypography variant="h6" textAlign="center">
-        &copy; 2025 Atharva Arankalle. All rights reserved.
+        &copy; 2026 Atharva Arankalle. All rights reserved.
       </StyledTypography>
     </StyledBox>
   );

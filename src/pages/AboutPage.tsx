@@ -21,8 +21,9 @@ const StyledCard = styled(Card)(({ theme }) => ({
   boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
   display: "flex",
   flexDirection: "column",
-  "@media (max-width: 550px)": {
-    width: "75%",
+  [theme.breakpoints.down("sm")]: {
+    width: "95%",
+    padding: "0.2rem",
   },
 }));
 
@@ -72,8 +73,9 @@ const AboutPage = () => {
             fontSize="1.1rem"
           >
             My other hobbies include playing the guitar, playing video games
-            with friends, watching movies and TV shows and reading.
-            I also love finding new places to enjoy a delicious meal, and I'm always on the lookout for new recommendations.
+            with friends, watching movies and TV shows and reading. I also love
+            finding new places to enjoy a delicious meal, and I'm always on the
+            lookout for new recommendations.
           </AboutMeTextTypography>
         </CardContent>
       </StyledCard>

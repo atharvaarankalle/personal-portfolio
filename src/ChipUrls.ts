@@ -7,12 +7,16 @@ const BadgeUrls: { [key: string]: string } = {
   Confluence:
     "https://img.shields.io/badge/Confluence-%23172B4D?style=for-the-badge&logo=confluence&logoColor=%23FFFFFF",
   CSS: "https://img.shields.io/badge/CSS-%23663399?style=for-the-badge&logo=css&logoColor=%23FFFFFF",
+  Django:
+    "https://img.shields.io/badge/Django-%23092E20?style=for-the-badge&logo=django&logoColor=%23FFFFFF",
   Express:
     "https://img.shields.io/badge/Express-%23000000?style=for-the-badge&logo=express",
   Figma:
     "https://img.shields.io/badge/Figma-%23000000?style=for-the-badge&logo=figma",
   Firebase:
     "https://img.shields.io/badge/Firebase-%23DD2C00?style=for-the-badge&logo=firebase&logoColor=%23FFFFFF",
+  Flask:
+    "https://img.shields.io/badge/Flask-%233BABC3?style=for-the-badge&logo=flask&logoColor=%23FFFFFF",
   Git: "https://img.shields.io/badge/Git-%23F05032?style=for-the-badge&logo=git&logoColor=%23FFFFFF",
   GitHub:
     "https://img.shields.io/badge/GitHub-%23181717?style=for-the-badge&logo=github&logoColor=%23FFFFFF",
@@ -26,10 +30,13 @@ const BadgeUrls: { [key: string]: string } = {
   Jira: "https://img.shields.io/badge/Jira-%230052CC?style=for-the-badge&logo=jira&logoColor=%23FFFFFF",
   "Material UI":
     "https://img.shields.io/badge/Material%20UI-%23007FFF?style=for-the-badge&logo=mui&logoColor=%23FFFFFF",
+  Laravel:
+    "https://img.shields.io/badge/Laravel-%23FF2D20?style=for-the-badge&logo=laravel&logoColor=%23FFFFFF",
   MongoDB:
     "https://img.shields.io/badge/MongoDB-%2347A248?style=for-the-badge&logo=mongodb&logoColor=%23FFFFFF",
   "Node.js":
     "https://img.shields.io/badge/Node.js-%235FA04E?style=for-the-badge&logo=nodedotjs&logoColor=%23FFFFFF",
+  PHP: "https://img.shields.io/badge/PHP-%23777BB4?style=for-the-badge&logo=php&logoColor=%23FFFFFF",
   Python:
     "https://img.shields.io/badge/Python-%233776AB?style=for-the-badge&logo=python&logoColor=%23FFFFFF",
   React:
