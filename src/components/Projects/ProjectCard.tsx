@@ -1,12 +1,5 @@
-import {
-  Box,
-  Card,
-  CardContent,
-  Grid,
-  Link,
-  Typography,
-  styled,
-} from "@mui/material";
+import { Box, Grid, Link, Typography, styled } from "@mui/material";
+import { motion } from "framer-motion";
 import TechnologyChip from "../TechnologyChip";
 
 interface ProjectCardProps {
@@ -19,16 +12,23 @@ interface ProjectCardProps {
   };
 }
 
-const StyledCard = styled(Card)(({ theme }) => ({
-  backgroundColor: theme.palette.mutedPurple.dark,
-  color: "#FFFFFF",
-  width: "100%",
-  padding: "0.5rem",
+const GlassCard = styled(motion.div)(() => ({
+  backgroundColor: "rgba(127, 100, 189, 0.05)",
+  backdropFilter: "blur(4px)",
   borderRadius: "1rem",
-  boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
+  border: "1px solid rgba(127, 100, 189, 0.2)",
+  padding: "2rem",
+  width: "100%",
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
+  transition: "all 0.3s ease",
+  "&:hover": {
+    backgroundColor: "rgba(127, 100, 189, 0.1)",
+    borderColor: "rgba(127, 100, 189, 0.4)",
+    transform: "translateY(-5px)",
+    boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
+  },
 }));
 
 const StyledLink = styled(Link)(({ theme }) => ({
@@ -42,8 +42,8 @@ const StyledLink = styled(Link)(({ theme }) => ({
     textDecorationColor: theme.palette.secondary.main,
   },
   "@media (max-width: 550px)": {
-    textDecorationThickness: "0.1rem"
-  }
+    textDecorationThickness: "0.1rem",
+  },
 }));
 
 const StyledBox = styled(Box)({
@@ -56,22 +56,24 @@ const StyledBox = styled(Box)({
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <StyledCard>
-      <CardContent
-        sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
-      >
-        <Grid container rowGap={1}>
+    <GlassCard>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+        <Grid container rowGap={1} alignItems="flex-start">
           <Grid size={{ xs: 12, lg: 9 }}>
             <StyledLink
               href={project.url !== "#" ? project.url : undefined}
               target="_blank"
+              underline="none"
             >
               <Typography
                 variant="h5"
                 fontWeight="bold"
                 sx={{
+                  color: "white",
+                  transition: "color 0.2s",
+                  "&:hover": { color: "secondary.main" },
                   "@media (max-width: 550px)": {
-                    fontSize: "1rem",
+                    fontSize: "1.2rem",
                   },
                 }}
               >
@@ -79,13 +81,16 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               </Typography>
             </StyledLink>
           </Grid>
-          <Grid size={{ md: 12, lg: 3}}>
+          <Grid size={{ md: 12, lg: 3 }}>
             <StyledBox>
               <Typography
-                variant="h6"
+                variant="subtitle1"
                 sx={{
+                  color: "secondary.main",
+                  fontWeight: "bold",
+                  opacity: 0.9,
                   "@media (max-width: 550px)": {
-                    fontSize: "1rem",
+                    fontSize: "0.9rem",
                   },
                 }}
               >
@@ -96,34 +101,44 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         </Grid>
         <Typography
           variant="body1"
-          textAlign="justify"
           sx={{
+            color: "white",
+            opacity: 0.8,
+            lineHeight: 1.7,
+            textAlign: "justify",
             "@media (max-width: 550px)": {
-              fontSize: "0.7rem",
+              fontSize: "0.85rem",
               textAlign: "left",
             },
           }}
         >
           {project.description}
         </Typography>
-      </CardContent>
-      <Box sx={{ padding: "1rem 1rem 0 1rem" }}>
+      </Box>
+      <Box sx={{ mt: "auto", pt: 3 }}>
         <Typography
-          variant="body1"
-          fontWeight="bold"
-          sx={{ paddingBottom: "0.5rem" }}
+          variant="subtitle2"
+          sx={{
+            color: "secondary.main",
+            fontWeight: "bold",
+            mb: 1.5,
+            textTransform: "uppercase",
+            letterSpacing: "1px",
+          }}
         >
           Technologies
         </Typography>
-        <Grid container spacing={1}>
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
           {project.technologies.map((technology) => (
-            <Grid key={technology}>
-              <TechnologyChip technologyName={technology} projectsChip />
-            </Grid>
+            <TechnologyChip
+              key={technology}
+              technologyName={technology}
+              projectsChip
+            />
           ))}
-        </Grid>
+        </Box>
       </Box>
-    </StyledCard>
+    </GlassCard>
   );
 };
 

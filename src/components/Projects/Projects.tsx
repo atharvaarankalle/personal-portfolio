@@ -1,41 +1,62 @@
-import {
-  Box,
-  Card,
-  CardContent,
-  Grid,
-  Typography,
-  styled,
-} from "@mui/material";
+import { Box, Grid, Typography, styled } from "@mui/material";
+import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 
-const StyledBox = styled(Box)({
+const StyledBox = styled(Box)(({ theme }) => ({
   width: "100%",
   display: "flex",
-  justifyContent: "center",
-  paddingBottom: "2rem",
-});
-
-const StyledCard = styled(Card)(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-  opacity: 0.9,
-  color: "#FFFFFF",
-  width: "65%",
-  padding: "0.5rem",
-  borderRadius: "1rem",
-  boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
-  display: "flex",
   flexDirection: "column",
-  "@media (max-width: 550px)": {
-    width: "75%",
+  alignItems: "center",
+  padding: "2rem 1.5rem 4rem 1.5rem",
+  boxSizing: "border-box",
+  [theme.breakpoints.down("sm")]: {
+    padding: "2rem 1.5rem 4rem 1.5rem",
   },
 }));
 
-const StyledTypography = styled(Typography)({
-  paddingBottom: "2rem",
-  "@media (max-width: 1200px)": {
-    fontSize: "2rem"
-  }
-});
+const GlassContainer = styled(motion.div)(({ theme }) => ({
+  backgroundColor: "rgba(20, 0, 38, 0.4)",
+  backdropFilter: "blur(12px)",
+  borderRadius: "1.5rem",
+  border: "1px solid rgba(127, 100, 189, 0.2)",
+  padding: "3rem",
+  width: "65%",
+  [theme.breakpoints.down("md")]: {
+    width: "85%",
+    padding: "2rem",
+    backgroundColor: "transparent",
+    backdropFilter: "none",
+    border: "none",
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "100%",
+    padding: "1.25rem",
+    backgroundColor: "transparent",
+    backdropFilter: "none",
+    border: "none",
+  },
+}));
+
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  color: theme.palette.secondary.main,
+  marginBottom: "2.5rem",
+  position: "relative",
+  display: "inline-block",
+  fontSize: "2.5rem",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "1.75rem",
+  },
+  "&::after": {
+    content: "''",
+    position: "absolute",
+    bottom: -8,
+    left: 0,
+    width: "40px",
+    height: "3px",
+    backgroundColor: theme.palette.primary.main,
+    borderRadius: "2px",
+  },
+}));
 
 const projects = [
   {
@@ -84,24 +105,32 @@ const projects = [
 const Projects = () => {
   return (
     <StyledBox>
-      <StyledCard>
-        <CardContent>
-          <StyledTypography variant="h3" fontWeight="bold">
-            Projects
-          </StyledTypography>
-          <Grid container spacing={5}>
-            {projects.map((project) => (
-              <Grid
-                key={project.title}
-                size={{ md: 12, lg: 6 }}
-                sx={{ display: "flex", justifyContent: "center" }}
-              >
-                <ProjectCard project={project} />
-              </Grid>
-            ))}
-          </Grid>
-        </CardContent>
-      </StyledCard>
+      <GlassContainer
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <SectionTitle variant="h3" fontWeight="bold">
+          Projects
+        </SectionTitle>
+        <Grid container spacing={4}>
+          {projects.map((project, index) => (
+            <Grid
+              key={project.title}
+              size={{ md: 12, lg: 6 }}
+              sx={{ display: "flex" }}
+              component={motion.div}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <ProjectCard project={project} />
+            </Grid>
+          ))}
+        </Grid>
+      </GlassContainer>
     </StyledBox>
   );
 };

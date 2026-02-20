@@ -57,7 +57,24 @@ const ProfileSummary = () => {
       }}
       gap={{ md: "2rem", lg: "5rem" }}
     >
-      <motion.div layoutId="profile-photo">
+      <motion.div
+        layoutId="profile-photo"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{
+          scale: 1,
+          opacity: 1,
+          y: [0, -10, 0],
+        }}
+        transition={{
+          scale: { type: "spring", stiffness: 100, damping: 15, delay: 0.2 },
+          opacity: { duration: 0.5, delay: 0.2 },
+          y: {
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+        }}
+      >
         <StyledAvatar src={profilePicture} alt="Atharva Arankalle" />
       </motion.div>
       <Box
@@ -67,12 +84,30 @@ const ProfileSummary = () => {
           justifyContent: "center",
           alignItems: "center",
         }}
+        component={motion.div}
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.2,
+              delayChildren: 0.4,
+            },
+          },
+        }}
       >
         <Stack
           direction="row"
           gap={{ xs: 1, md: 2 }}
           width="100%"
           justifyContent="center"
+          component={motion.div}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0 },
+          }}
         >
           <HeadingTextTypography>Hi, I'm</HeadingTextTypography>
           <NameTextTypography>Atharva</NameTextTypography>
@@ -87,10 +122,23 @@ const ProfileSummary = () => {
               fontSize: "1.5rem",
             },
           }}
+          component={motion.div}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0 },
+          }}
         >
           Welcome to my portfolio!
         </Typography>
-        <SocialsButtons />
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, scale: 0.8 },
+            visible: { opacity: 1, scale: 1 },
+          }}
+          transition={{ type: "spring", stiffness: 200, damping: 15 }}
+        >
+          <SocialsButtons />
+        </motion.div>
       </Box>
     </Box>
   );

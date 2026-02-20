@@ -1,25 +1,57 @@
-import { Card, CardContent, Grid, Typography, styled } from "@mui/material";
+import { Box, Grid, Typography, styled } from "@mui/material";
+import { motion } from "framer-motion";
 import TechnologyChip from "./TechnologyChip";
 
-const StyledCard = styled(Card)(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-  opacity: 0.9,
-  color: "#FFFFFF",
+const GlassContainer = styled(motion.div)(({ theme }) => ({
+  backgroundColor: "rgba(20, 0, 38, 0.4)",
+  backdropFilter: "blur(12px)",
+  borderRadius: "1.5rem",
+  border: "1px solid rgba(127, 100, 189, 0.2)",
+  padding: "3rem",
   width: "65%",
-  padding: "0.5rem",
-  borderRadius: "1rem",
-  boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
-  "@media (max-width: 550px)": {
-    width: "75%",
+  [theme.breakpoints.down("md")]: {
+    width: "85%",
+    padding: "2rem",
+    backgroundColor: "transparent",
+    backdropFilter: "none",
+    border: "none",
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "100%",
+    padding: "1.5rem",
+    backgroundColor: "transparent",
+    backdropFilter: "none",
+    border: "none",
   },
 }));
 
-const StyledTypography = styled(Typography)({
-  paddingBottom: "2rem",
-  "@media (max-width: 1200px)": {
-    fontSize: "2rem",
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  color: theme.palette.secondary.main,
+  marginBottom: "1.5rem",
+  position: "relative",
+  display: "inline-block",
+  fontSize: "2.5rem",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "1.75rem",
   },
-});
+  "&::after": {
+    content: "''",
+    position: "absolute",
+    bottom: -8,
+    left: 0,
+    width: "40px",
+    height: "3px",
+    backgroundColor: theme.palette.primary.main,
+    borderRadius: "2px",
+  },
+}));
+
+const SkillCategoryTitle = styled(Typography)(({ theme }) => ({
+  fontWeight: "bold",
+  color: theme.palette.secondary.main,
+  marginBottom: "1rem",
+  fontSize: "1.25rem",
+}));
 
 const frontendSkills = [
   "HTML",
@@ -39,121 +71,69 @@ const cloudSkills = ["AWS", "Azure"];
 
 const toolsSkills = ["Git", "GitHub", "Figma", "GitLab", "Jira", "Confluence"];
 
+const StyledBox = styled(Box)(({ theme }) => ({
+  width: "100%",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  padding: "0 1.5rem",
+  boxSizing: "border-box",
+  [theme.breakpoints.down("sm")]: {
+    padding: "0 1.5rem",
+  },
+}));
+
 const Skills = () => {
+  const categories = [
+    { title: "Frontend", skills: frontendSkills },
+    { title: "Backend", skills: backendSkills },
+    { title: "Data", skills: dataSkills },
+    { title: "Cloud", skills: cloudSkills },
+    { title: "Tools", skills: toolsSkills },
+  ];
+
   return (
-    <StyledCard>
-      <CardContent>
-        <StyledTypography
-          variant="h3"
-          fontWeight="bold"
-          sx={{ paddingBottom: "1rem" }}
-        >
+    <StyledBox>
+      <GlassContainer
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <SectionTitle variant="h3" fontWeight="bold">
           Skills
-        </StyledTypography>
-        <Grid container rowGap={3} columnSpacing={5}>
-          <Grid size={{ sm: 12, md: 6 }}>
-            <Typography variant="h5" fontWeight="bold" color="secondary">
-              Frontend
-            </Typography>
-            <Grid
-              container
-              rowGap={2}
-              columnGap={2}
-              sx={{ paddingTop: "0.75rem" }}
-            >
-              {frontendSkills.map((skill) => (
-                <Grid key={skill} size="auto">
-                  <TechnologyChip technologyName={skill} />
-                </Grid>
-              ))}
+        </SectionTitle>
+        <Grid container spacing={4} sx={{ mt: 1 }}>
+          {categories.map((cat, catIndex) => (
+            <Grid key={cat.title} size={{ xs: 12, sm: 6, md: 4 }}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: catIndex * 0.1 }}
+              >
+                <SkillCategoryTitle variant="h5">
+                  {cat.title}
+                </SkillCategoryTitle>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1.5 }}>
+                  {cat.skills.map((skill, skillIndex) => (
+                    <motion.div
+                      key={skill}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: catIndex * 0.1 + skillIndex * 0.05 }}
+                    >
+                      <TechnologyChip technologyName={skill} />
+                    </motion.div>
+                  ))}
+                </Box>
+              </motion.div>
             </Grid>
-          </Grid>
-          <Grid size={{ sm: 12, md: 6 }}>
-            <Typography variant="h5" fontWeight="bold" color="secondary">
-              Backend
-            </Typography>
-            <Grid
-              container
-              rowGap={2}
-              columnGap={2}
-              sx={{ paddingTop: "0.75rem" }}
-            >
-              {backendSkills.map((skill) => (
-                <Grid key={skill} size="auto">
-                  <TechnologyChip technologyName={skill} />
-                </Grid>
-              ))}
-            </Grid>
-          </Grid>
-          <Grid size={{ sm: 12, md: 6 }}>
-            <Typography
-              variant="h5"
-              fontWeight="bold"
-              color="secondary"
-              sx={{ paddingTop: "2rem" }}
-            >
-              Data
-            </Typography>
-            <Grid
-              container
-              rowGap={2}
-              columnGap={2}
-              sx={{ paddingTop: "0.75rem" }}
-            >
-              {dataSkills.map((skill) => (
-                <Grid key={skill} size="auto">
-                  <TechnologyChip technologyName={skill} />
-                </Grid>
-              ))}
-            </Grid>
-          </Grid>
-          <Grid size={{ sm: 12, md: 6 }}>
-            <Typography
-              variant="h5"
-              fontWeight="bold"
-              color="secondary"
-              sx={{ paddingTop: "2rem" }}
-            >
-              Cloud
-            </Typography>
-            <Grid
-              container
-              rowGap={2}
-              columnGap={2}
-              sx={{ paddingTop: "0.75rem" }}
-            >
-              {cloudSkills.map((skill) => (
-                <Grid key={skill} size="auto">
-                  <TechnologyChip technologyName={skill} />
-                </Grid>
-              ))}
-            </Grid>
-          </Grid>
-          <Grid size={{ sm: 12, md: 6 }}>
-            <Typography
-              variant="h5"
-              fontWeight="bold"
-              color="secondary"
-              sx={{ paddingTop: "2rem" }}
-            >
-              Project Management Tools
-            </Typography>
-            <Grid
-              container
-              rowGap={2}
-              columnGap={2}
-              sx={{ paddingTop: "0.75rem" }}
-            >
-              {toolsSkills.map((skill) => (
-                <Grid key={skill} size="auto">
-                  <TechnologyChip technologyName={skill} />
-                </Grid>
-              ))}
-            </Grid>
-          </Grid>
+          ))}
         </Grid>
-      </CardContent>
-    </StyledCard>
+      </GlassContainer>
+    </StyledBox>
   );
 };
 

@@ -12,7 +12,7 @@ const StyledBox = styled(Box)({
 
 const ContentBox = styled(Box)({
   flex: 1,
-  padding: "2rem 0",
+  padding: 0,
 });
 
 const StyledTypography = styled(Typography)({
